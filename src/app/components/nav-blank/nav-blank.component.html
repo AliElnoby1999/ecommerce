@@ -1,0 +1,128 @@
+<nav class="navbar shadow-sm navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">
+      <img src="./assets/images/freshcart-logo.svg" alt="logo" class="logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLinkActive="active-link"
+            routerLink="home"
+            >home</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLinkActive="active-link"
+            routerLink="products"
+            >products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLinkActive="active-link"
+            routerLink="categories"
+            >categories</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-capitalize"
+            routerLinkActive="active-link"
+            routerLink="brands"
+            >brands</a
+          >
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item me-4 hstack">
+          <a routerLink="/whishlist" class="text-main number-item">
+            <i class="fas fa-heart fa-2x text-danger"></i>
+            <span *ngIf="whishItemNumber">{{ whishItemNumber }}</span>
+            <!-- <span *ngIf="whishItemNumber"> {{ whishItemNumber }} </span> -->
+          </a>
+        </li>
+
+        <li class="nav-item me-4 hstack">
+          <a
+            class="nav-link text-capitalize position-relative"
+            routerLink="cart"
+            ><i class="fas fa-cart-shopping fa-2x text-main"></i>
+            <span class="badge bg-info position-absolute top-0 end-0">{{
+              cartcount
+            }}</span>
+          </a>
+        </li>
+        <li class="nav-item me-4">
+          <div class="dropdown">
+            <button
+              class="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user text-success"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item small" routerLink="/setting/update"
+                  >Update password
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item small" routerLink="/setting/forget"
+                  >forget password</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  target="_blank" href="/"><i class="fab fa-instagram"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-facebook"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-tiktok"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-linkedin"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-youtube"></i></a>
+        </li>
+
+        <li class="nav-item">
+          <span class="nav-link cursor-pointer" (click)="logoutUser()"
+            >SignOut</span
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,25 @@
+<section class="my-4 categories" *ngIf="Brand.length">
+    <div
+      class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 justify-content-center"
+    >
+      <div class="col" *ngFor="let Brand of Brand">
+        <div
+          class="card"
+          role="button"
+         
+        >
+          <img
+            loading="lazy"
+            height="300"
+            class="card-img-top"
+            [src]="Brand.image"
+            [alt]="Brand.name"
+          />
+  
+          <div class="card-body">
+            <h3 class="h6 text-main text-center">{{ Brand.name }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

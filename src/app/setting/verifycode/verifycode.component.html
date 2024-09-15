@@ -1,0 +1,18 @@
+<section class="bg-main-light mx-auto my-3 w-75">
+
+    <form (ngSubmit)="handelform()"  [formGroup]="resetCodeform">
+        <div class="p-3">
+            <h2 class="h3 text-main">reset your Account Password</h2>
+            <input #inputresetCode type="text"  id="resetCode" placeholder="resetCode"  class="form-control" formControlName="resetCode" />
+    
+            <div class="alert alert-danger" *ngIf="resetCodeform.get('resetCode')?.errors && (resetCodeform.get('resetCode')?.touched||inputresetCode.value.length>0)">
+                <p *ngIf="resetCodeform.get('resetCode')?.getError('required')">resetCode is Required</p>
+     
+            </div>
+            
+            <button class="btn-main mt-3">Verify</button>
+    
+        </div>
+    
+    </form>
+    </section>

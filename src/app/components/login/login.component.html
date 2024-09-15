@@ -1,0 +1,108 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+  <h1 class="text-center">Login Now</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
+    <div class="mb-2">
+      <label for="email">email :</label>
+      <input
+        #inputEmail
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        required
+      />
+
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          loginForm.get('email')?.errors &&
+          (loginForm.get('email')?.touched || inputEmail.value.length > 0)
+        "
+      >
+        <p *ngIf="loginForm.get('email')?.getError('required')">
+          Name is required.
+        </p>
+        <p *ngIf="loginForm.get('email')?.getError('email')">email in vaild.</p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="password">password :</label>
+      <div class="position-relative">
+        <input
+          #inputPassword
+          formControlName="password"
+          id="password"
+          type="Password"
+          class="form-control"
+          placeholder=" Password...."
+        />
+
+        <span
+          (click)="
+            rePasswordShow = true;
+            rePasswordShow == true
+              ? (inputPassword.type = 'text')
+              : (inputPassword.type = 'password')
+          "
+          [ngClass]="{
+            'd-none': rePasswordShow
+          }"
+          role="button"
+          class="position-absolute top-50 end-0 translate-middle-y me-2"
+        >
+          <i class="fas fa-eye"></i>
+        </span>
+
+        <span
+          (click)="
+            rePasswordShow = false;
+            rePasswordShow == false
+              ? (inputPassword.type = 'password')
+              : (inputPassword.type = 'text')
+          "
+          [ngClass]="{
+            'd-none': !rePasswordShow
+          }"
+          role="button"
+          class="position-absolute top-50 end-0 translate-middle-y me-2"
+        >
+          <i class="fas fa-eye-slash"></i>
+        </span>
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          loginForm.get('password')?.errors &&
+          (loginForm.get('password')?.touched || inputPassword.value.length > 0)
+        "
+      >
+        <p *ngIf="loginForm.get('password')?.getError('required')">
+          password is required.
+        </p>
+        <p *ngIf="loginForm.get('password')?.getError('pattern')">
+          password must start with upperCase then from 6 to 10.
+        </p>
+      </div>
+    </div>
+
+    <button class="btn-main ms-auto d-block">
+      Login
+      <i *ngIf="isloading" class="fas fa-spinner fa-spin"></i>
+    </button>
+    <p *ngIf="msgError" class="alert alert-danger">{{ msgError }}</p>
+
+    <span class="cursor-pointer"
+      ><a class="text-main" routerLink="/forgot"
+        >Forget your Password ?
+      </a></span
+    >
+
+    <div class="mt-3">
+      <a class="text-main cursor-pointer" routerLink="/register"
+        >Don't have an account? Sign up</a
+      >
+    </div>
+  </form>
+</section>
+
+<!-- [disabled]="loginForm.invalid" -->

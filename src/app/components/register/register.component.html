@@ -1,0 +1,193 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+  <h1 class="text-center">Register Now</h1>
+  <form [formGroup]="registerFrom" (ngSubmit)="handleForm()">
+    <!-- <div *ngIf="registerFrom.invalid && (registerFrom.dirty || registerFrom.touched)" class="alert alert-danger">
+            <div *ngIf="registerFrom.get('name')?.getError("minlength")|json">Name is required.</div>
+            <div *ngIf="registerFrom.get('email').errors?.required">Email is required.</div>
+            <div *ngIf="registerFrom.get('email').errors?.email">Invalid email format.</div>
+            </div> -->
+    <div class="mb-2">
+      <label for="name">Name :</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        
+      />
+      <div class="alert alert-danger" *ngIf="registerFrom.get('name')?.errors && registerFrom.get('name')?.touched" >
+        <p *ngIf="registerFrom.get('name')?.getError('required')">
+            Name is required.</p>
+            <p *ngIf="registerFrom.get('name')?.getError('minlength')">Name is required and must be at least 3 characters long.</p>
+                <p *ngIf="registerFrom.get('name')?.getError('maxlength')">
+                    Name Max Length 20.</p>
+                
+            
+            
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="email">email :</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        required
+      />
+
+
+      <div class="alert alert-danger" *ngIf="registerFrom.get('email')?.errors && registerFrom.get('email')?.touched" >
+        <p *ngIf="registerFrom.get('email')?.getError('required')">
+            Name is required.</p>
+                <p *ngIf="registerFrom.get('email')?.getError('email')">
+                    email in vaild.</p>            
+      </div>
+
+
+
+
+    </div>
+    <div class="mb-2">
+      <label for="password">password :</label>
+      <div class="position-relative">
+        <input
+        #inputPassword
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        required
+      />
+      <span
+      (click)="
+        rePasswordShow = true;
+        rePasswordShow == true
+          ? (inputPassword.type = 'text')
+          : (inputPassword.type = 'password')
+      "
+      [ngClass]="{
+        'd-none': rePasswordShow
+      }"
+      role="button"
+      class="position-absolute top-50 end-0 translate-middle-y me-2"
+    >
+      <i class="fas fa-eye"></i>
+    </span>
+
+    <span
+      (click)="
+        rePasswordShow = false;
+        rePasswordShow == false
+          ? (inputPassword.type = 'password')
+          : (inputPassword.type = 'text')
+      "
+      [ngClass]="{
+        'd-none': !rePasswordShow
+      }"
+      role="button"
+      class="position-absolute top-50 end-0 translate-middle-y me-2"
+    >
+      <i class="fas fa-eye-slash"></i>
+    </span>
+
+      </div>
+     
+      <div class="alert alert-danger" *ngIf="registerFrom.get('password')?.errors && registerFrom.get('password')?.touched" >
+        <p *ngIf="registerFrom.get('password')?.getError('required')">
+            password is required.</p>
+                <p *ngIf="registerFrom.get('password')?.getError('pattern')">
+                    password must start with upperCase then from 6 to 10.</p>
+                
+            
+            
+      </div>
+
+    </div>
+    <div class="mb-2">
+      <label for="repassword">re-password :</label>
+      <div class="position-relative">
+        <input
+        #repassword
+        type="password"
+        id="repassword"
+        class="form-control"
+        formControlName="rePassword"
+        required
+      />
+
+      <span
+      (click)="
+        rePasswordShow2 = true;
+        rePasswordShow2 == true
+          ? (repassword.type = 'text')
+          : (repassword.type = 'password')
+      "
+      [ngClass]="{
+        'd-none': rePasswordShow2
+      }"
+      role="button"
+      class="position-absolute top-50 end-0 translate-middle-y me-2"
+    >
+      <i class="fas fa-eye"></i>
+    </span>
+
+    <span
+      (click)="
+        rePasswordShow2 = false;
+        rePasswordShow2 == false
+          ? (repassword.type = 'password')
+          : (repassword.type = 'text')
+      "
+      [ngClass]="{
+        'd-none': !rePasswordShow2
+      }"
+      role="button"
+      class="position-absolute top-50 end-0 translate-middle-y me-2"
+    >
+      <i class="fas fa-eye-slash"></i>
+    </span>
+      </div>
+    
+
+      <div class="alert alert-danger" *ngIf="registerFrom.get('rePassword')?.errors && registerFrom.get('rePassword')?.touched" >
+        <p *ngIf="registerFrom.get('rePassword')?.getError('required')">
+            rePassword is required.</p>
+                <p *ngIf="registerFrom.get('rePassword')?.getError('notSame')">
+                    rePassword must start with upperCase then from 6 to 10.</p>
+                
+            
+            
+      </div>
+
+
+    </div>
+    <div class="mb-2">
+      <label for="phone">Phone : </label>
+      <input
+        type="tel"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+        required
+      />
+
+      <div class="alert alert-danger" *ngIf="registerFrom.get('phone')?.errors && registerFrom.get('phone')?.touched" >
+        <p *ngIf="registerFrom.get('phone')?.getError('required')">
+            phone is required.</p>
+                <p *ngIf="registerFrom.get('phone')?.getError('pattern')">
+                    "accept only egypt phone numbers"</p>
+                
+            
+            
+      </div>
+
+    </div>
+
+    <button [disabled]="registerFrom.invalid" class="btn-main ms-auto d-block">
+      Register
+    <i  *ngIf="isloading"  class="fas fa-spinner fa-spin" ></i>
+    </button>
+    <p *ngIf="msgError" class="alert alert-danger">{{msgError}}</p>
+  </form>
+</section>
