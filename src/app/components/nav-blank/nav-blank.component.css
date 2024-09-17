@@ -1,62 +1,62 @@
 .navbar {
-    transition: padding 1s;
-  }
-  
-  .number-item {
-    position: relative;
-  
-    span {
-      position: absolute;
-      bottom: 18%;
-      left: 36%;
-      color: #343a40;
-      z-index: 10;
-      font-weight: 900;
-    }
-  }
-  
-  .dropdown-toggle {
-    background-color: transparent;
-    border: 1px solid #0aad0a;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    padding: 0;
-    font-size: 15px;
-    position: relative;
-  }
-  
-  .dropdown-toggle::after {
-    display: inline-block;
-    margin-left: 0;
-    vertical-align: 0;
-    content: "";
-    border-top: 0.5em solid #0aad0a;
-    border-right: 0.5em solid transparent;
-    border-left: 0.5em solid transparent;
+  transition: padding 1s;
+}
+
+.number-item {
+  position: relative;
+
+  :is(span) {
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 18%;
+    left: 36%;
+    color: #343a40;
+    z-index: 10;
+    font-weight: 900;
   }
-  
-  .dropdown-item:focus,
-  .dropdown-item:hover {
-    background-color: #055d0a !important;
-    color: #fff !important;
-  }
-  
-  .dropdown-item {
-    transition: 1s !important;
-    padding: 4px !important;
-  }
-  
-  .dropdown-menu {
-    padding: 3px !important;
-    text-align: center;
-  }
-  
-  .dropdown-menu[data-bs-popper] {
-    left: -124% !important;
-  }
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border: 1px solid #0aad0a;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  padding: 0;
+  font-size: 15px;
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0;
+  vertical-align: 0;
+  content: "";
+  border-top: 0.5em solid #0aad0a;
+  border-right: 0.5em solid transparent;
+  border-left: 0.5em solid transparent;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: #055d0a !important;
+  color: #fff !important;
+}
+
+.dropdown-item {
+  transition: 1s !important;
+  padding: 4px !important;
+}
+
+.dropdown-menu {
+  padding: 3px !important;
+  text-align: center;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -124% !important;
+}
